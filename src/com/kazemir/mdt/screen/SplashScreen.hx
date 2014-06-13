@@ -1,0 +1,55 @@
+package com.kazemir.mdt.screen;
+
+import com.haxepunk.HXP;
+import com.haxepunk.graphics.Image;
+import com.haxepunk.utils.Input;
+
+class SplashScreen extends Screen
+{
+	private var base:Image;
+	private var isDown:Bool;
+	
+	public function new() 
+	{
+		super();
+		
+		isDown = true;
+	}
+	
+	public override function begin()
+	{
+		super.update();
+		
+		base = Image.createRect(HXP.width, HXP.height, 0, 0.99);
+        base.scrollX = base.scrollY = 0;
+        addGraphic(base).layer = -5; 
+		
+		var base2 = Image.createRect(HXP.width, HXP.height, 0xFFFFFF, 1);
+        base2.scrollX = base2.scrollY = 0;
+        addGraphic(base2).layer = 10; 
+		
+		var img:Image = new Image("graphics/kod_10._plemya.png"); 
+		img.centerOrigin();
+		img.scale = 1.0;
+		addGraphic(img, 10, HXP.width / 2, HXP.height / 2);
+	}
+	
+	public override function update()
+	{
+		if(base.alpha != 0 && isDown)
+			base.alpha -= 0.01;
+		else if (isDown && base.alpha == 0)
+			isDown = false;
+		else if(!isDown)
+			base.alpha += 0.01;
+		
+		if (base.alpha == 1)
+			HXP.scene = new MenuScreen();
+			
+		if (Input.pressed("esc") || Input.pressed("action"))
+		{
+			HXP.scene = new MenuScreen();
+		}
+		super.update();
+	}
+}
