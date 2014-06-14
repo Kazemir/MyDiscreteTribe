@@ -67,15 +67,15 @@ class Screen extends Scene
 	{
 		var config:Xml = Xml.createElement("settings");
 
-		//config.set("sound", Std.string(SettingsMenu.soudVolume));
-		//config.set("music", Std.string(SettingsMenu.musicVolume));
+		config.set("sound", Std.string(SettingsMenu.soudVolume));
+		config.set("music", Std.string(SettingsMenu.musicVolume));
 			
 #if android
 		File.saveContent(SystemPath.applicationStorageDirectory + "/config.xml", config.toString());
 #elseif flash
-		Data.load("tpuquuest_data");
+		Data.load("mdt_data");
 		Data.write("settings", config.toString());
-		Data.save("tpuquuest_data", true);
+		Data.save("mdt_data", true);
 #else
 		File.saveContent("config.xml", config.toString());
 #end

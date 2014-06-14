@@ -3,25 +3,27 @@ package com.kazemir.mdt;
 import com.haxepunk.HXP;
 import com.haxepunk.Sfx;
 
+import com.kazemir.mdt.screen.SettingsMenu;
+
 class MusicManager
 {
-	public static var currentMusiuc:Sfx;
+	public var currentMusic:Sfx;
 	
 #if flash
-	private static var mainMusic:String = "music/SKOMOROSHIJ_BUNT_REVOLUTION_OF_CLOWNS_-_Naigrysh_Impromptu.mp3";
-	private static var musicArray:Array<String> = ["music/SKOMOROSHIJ_BUNT_REVOLUTION_OF_CLOWNS_-_Melenka_Little_Mill__instrumental_.mp3", 
+	private var mainMusic:String = "music/SKOMOROSHIJ_BUNT_REVOLUTION_OF_CLOWNS_-_Naigrysh_Impromptu.mp3";
+	private var musicArray:Array<String> = ["music/SKOMOROSHIJ_BUNT_REVOLUTION_OF_CLOWNS_-_Melenka_Little_Mill__instrumental_.mp3", 
 													"music/SKOMOROSHIJ_BUNT_REVOLUTION_OF_CLOWNS_-_Nebylitsy_Fables__instrumental_.mp3",
 													"music/SKOMOROSHIJ_BUNT_REVOLUTION_OF_CLOWNS_-_Poljushko-Pole_A_Field__variant_.mp3",
 													"music/SKOMOROSHIJ_BUNT_REVOLUTION_OF_CLOWNS_-_Russkaja_Narodnaja_Russian_Traditional.mp3"];
 #else
-	private static var mainMusic:String = "music/SKOMOROSHIJ_BUNT_REVOLUTION_OF_CLOWNS_-_Naigrysh_Impromptu.ogg";
-	private static var musicArray:Array<String> = ["music/SKOMOROSHIJ_BUNT_REVOLUTION_OF_CLOWNS_-_Melenka_Little_Mill__instrumental_.ogg", 
+	private var mainMusic:String = "music/SKOMOROSHIJ_BUNT_REVOLUTION_OF_CLOWNS_-_Naigrysh_Impromptu.ogg";
+	private var musicArray:Array<String> = ["music/SKOMOROSHIJ_BUNT_REVOLUTION_OF_CLOWNS_-_Melenka_Little_Mill__instrumental_.ogg", 
 													"music/SKOMOROSHIJ_BUNT_REVOLUTION_OF_CLOWNS_-_Nebylitsy_Fables__instrumental_.ogg",
 													"music/SKOMOROSHIJ_BUNT_REVOLUTION_OF_CLOWNS_-_Poljushko-Pole_A_Field__variant_.ogg",
 													"music/SKOMOROSHIJ_BUNT_REVOLUTION_OF_CLOWNS_-_Russkaja_Narodnaja_Russian_Traditional.ogg"];
 #end
 
-	private static var playedList:Array<Bool>;
+	private var playedList:Array<Bool>;
 	private var fade:Bool;
 	private var fadeForGame:Bool;
 	
@@ -35,8 +37,8 @@ class MusicManager
 		fade = false;
 		fadeForGame = true;
 		
-		currentMusiuc = new Sfx(mainMusic);
-		currentMusiuc.loop(1, 0);
+		currentMusic = new Sfx(mainMusic);
+		currentMusic.loop(SettingsMenu.musicVolume / 10, 0);
 	}
 	
 	public function goGameMusic()
@@ -53,12 +55,12 @@ class MusicManager
 	
 	public function stop()
 	{
-		currentMusiuc.stop();
+		currentMusic.stop();
 	}
 	
 	private function ifMusicStops()
 	{
-		currentMusiuc.stop();
+		currentMusic.stop();
 		var mus:String = "";
 		var rnd:Int = HXP.rand(musicArray.length);
 		var i:Int = 0;
@@ -91,16 +93,16 @@ class MusicManager
 			mus = musicArray[rnd];
 		}
 		
-		currentMusiuc = new Sfx(mus, ifMusicStops);
-		currentMusiuc.play(1, 0, false);
+		currentMusic = new Sfx(mus, ifMusicStops);
+		currentMusic.play(SettingsMenu.musicVolume / 10, 0, false);
 	}
 	
 	public function update()
 	{
 		if (fade)
 		{
-			currentMusiuc.volume -= 0.02;
-			if (currentMusiuc.volume == 0)
+			currentMusic.volume -= 0.02;
+			if (currentMusic.volume == 0)
 			{
 				fade = false;
 				if (fadeForGame)
@@ -109,8 +111,8 @@ class MusicManager
 				}
 				else
 				{
-					currentMusiuc = new Sfx(mainMusic);
-					currentMusiuc.loop(1, 0);
+					currentMusic = new Sfx(mainMusic);
+					currentMusic.loop(SettingsMenu.musicVolume / 10, 0);
 				}
 			}
 		}
