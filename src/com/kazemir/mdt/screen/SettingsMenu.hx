@@ -15,6 +15,9 @@ class SettingsMenu extends Screen
 	public override function begin()
 	{
 		super.begin();
+		
+		var img:Image = new Image("graphics/menu_settings.png");
+		addGraphic(img);
 	}
 	
 	public override function update()

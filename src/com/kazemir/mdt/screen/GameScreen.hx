@@ -22,6 +22,8 @@ class GameScreen extends Screen
         base2.scrollX = base2.scrollY = 0;
         addGraphic(base2).layer = 10; 
 		
+		var img:Image = new Image("graphics/gameScreen.png");
+		addGraphic(img);
 		
 	}
 	

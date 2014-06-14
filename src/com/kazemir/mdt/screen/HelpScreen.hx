@@ -15,6 +15,9 @@ class HelpScreen extends Screen
 	public override function begin()
 	{
 		super.begin();
+		
+		var img:Image = new Image("graphics/menu_help.png");
+		addGraphic(img);
 	}
 	
 	public override function update()
