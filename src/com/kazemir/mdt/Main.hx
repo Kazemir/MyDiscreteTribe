@@ -9,7 +9,11 @@ class Main extends Engine
 {
 	public function new()
 	{
+#if !flash
 		super(800, 600, 30, true, RenderMode.HARDWARE);
+#else	
+		super(800, 600, 30, true, RenderMode.BUFFER);
+#end
 	}
 	
 	override public function init()
@@ -26,7 +30,7 @@ class Main extends Engine
 		new Main(); 
 	}
 	
-	override public function focusLost () 
+	/*override public function focusLost () 
 	{
 		paused = true;
 	}
@@ -34,6 +38,6 @@ class Main extends Engine
 	override public function focusGained () 
 	{
 		paused = false;
-	}
+	}*/
 
 }

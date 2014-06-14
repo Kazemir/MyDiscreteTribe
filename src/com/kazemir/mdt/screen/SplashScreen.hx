@@ -18,7 +18,7 @@ class SplashScreen extends Screen
 	
 	public override function begin()
 	{
-		super.update();
+		super.begin();
 		
 		base = Image.createRect(HXP.width, HXP.height, 0, 0.99);
         base.scrollX = base.scrollY = 0;
@@ -37,11 +37,11 @@ class SplashScreen extends Screen
 	public override function update()
 	{
 		if(base.alpha != 0 && isDown)
-			base.alpha -= 0.01;
+			base.alpha -= 0.02;
 		else if (isDown && base.alpha == 0)
 			isDown = false;
 		else if(!isDown)
-			base.alpha += 0.01;
+			base.alpha += 0.02;
 		
 		if (base.alpha == 1)
 			HXP.scene = new MenuScreen();
@@ -50,6 +50,7 @@ class SplashScreen extends Screen
 		{
 			HXP.scene = new MenuScreen();
 		}
+		
 		super.update();
 	}
 }

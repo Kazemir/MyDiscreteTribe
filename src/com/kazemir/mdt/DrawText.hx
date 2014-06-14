@@ -5,11 +5,11 @@ import com.haxepunk.Entity;
 import flash.text.TextFormatAlign;
 
 enum GameFont {
-        Imperial;
-        Molot;
-		Arial;
-		PixelCyr;
-		JoystixMonospace;
+        Beryozki;
+        TriodPostnaja;
+		ConsolaMono;
+		Tsarevich;
+		ZAGADKA;
     }
 
 class DrawText
@@ -18,23 +18,20 @@ class DrawText
 	public var center:Bool;
 	
 	public function new(str:String, font:GameFont, size:Int, x:Float, y:Float, color:Int = 0xFFFFFF, centred:Bool = true, width:Int = -1, height:Int = -1, centredAligm:Bool = true)
-	{
-		if (size <= 0 || color < 0 || color > 0xFFFFFF)
-			throw "Error! Incorrect parameters!";
-			
+	{	
 		var fnt;
 		switch(font)
 		{
-			case Imperial:
-				fnt = "font/Imperial.ttf";
-			case Molot:
-				fnt = "font/Molot.ttf";
-			case Arial:
-				fnt = "font/arial.ttf";
-			case PixelCyr:
-				fnt = "font/PixelCyr.ttf";
-			case JoystixMonospace:
-				fnt = "font/JoystixMonospace.ttf";
+			case Beryozki:
+				fnt = "fonts/Beryozki.ttf";
+			case TriodPostnaja:
+				fnt = "fonts/TriodPostnaja.ttf";
+			case ConsolaMono:
+				fnt = "fonts/ConsolaMono-Bold.ttf";
+			case Tsarevich:
+				fnt = "fonts/Tsarevich.ttf";
+			case ZAGADKA:
+				fnt = "fonts/ZAGADKA_.TTF";
 		}
 		
 		if(width == -1 || height == -1)
@@ -102,16 +99,16 @@ class DrawText
 		var fnt;
 		switch(font)
 		{
-			case Imperial:
-				fnt = "font/Imperial.ttf";
-			case Molot:
-				fnt = "font/Molot.ttf";
-			case Arial:
-				fnt = "font/arial.ttf";
-			case PixelCyr:
-				fnt = "font/PixelCyr.ttf";
-			case JoystixMonospace:
-				fnt = "font/JoystixMonospace.ttf";
+			case Beryozki:
+				fnt = "fonts/Beryozki.ttf";
+			case TriodPostnaja:
+				fnt = "fonts/TriodPostnaja.ttf";
+			case ConsolaMono:
+				fnt = "fonts/ConsolaMono-Bold.ttf";
+			case Tsarevich:
+				fnt = "fonts/Tsarevich.ttf";
+			case ZAGADKA:
+				fnt = "fonts/ZAGADKA_.TTF";
 		}
 		var fastText:Text = new Text(str, x, y);
 		fastText.color = color;
