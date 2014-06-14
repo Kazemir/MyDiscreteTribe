@@ -46,7 +46,7 @@ class SplashScreen extends Screen
 		if (base.alpha == 1)
 			HXP.scene = new MenuScreen();
 			
-		if (Input.pressed("esc") || Input.pressed("action"))
+		if (Input.pressed("esc") || Input.pressed("action") || Screen.joyPressed("BACK") || Screen.joyPressed("B") || Screen.joyPressed("START") || Screen.joyPressed("A"))
 		{
 			HXP.scene = new MenuScreen();
 		}

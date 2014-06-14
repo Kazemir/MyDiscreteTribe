@@ -7,10 +7,20 @@ class MusicManager
 {
 	public static var currentMusiuc:Sfx;
 	
+#if flash
+	private static var mainMusic:String = "music/SKOMOROSHIJ_BUNT_REVOLUTION_OF_CLOWNS_-_Naigrysh_Impromptu.mp3";
 	private static var musicArray:Array<String> = ["music/SKOMOROSHIJ_BUNT_REVOLUTION_OF_CLOWNS_-_Melenka_Little_Mill__instrumental_.mp3", 
 													"music/SKOMOROSHIJ_BUNT_REVOLUTION_OF_CLOWNS_-_Nebylitsy_Fables__instrumental_.mp3",
 													"music/SKOMOROSHIJ_BUNT_REVOLUTION_OF_CLOWNS_-_Poljushko-Pole_A_Field__variant_.mp3",
 													"music/SKOMOROSHIJ_BUNT_REVOLUTION_OF_CLOWNS_-_Russkaja_Narodnaja_Russian_Traditional.mp3"];
+#else
+	private static var mainMusic:String = "music/SKOMOROSHIJ_BUNT_REVOLUTION_OF_CLOWNS_-_Naigrysh_Impromptu.ogg";
+	private static var musicArray:Array<String> = ["music/SKOMOROSHIJ_BUNT_REVOLUTION_OF_CLOWNS_-_Melenka_Little_Mill__instrumental_.ogg", 
+													"music/SKOMOROSHIJ_BUNT_REVOLUTION_OF_CLOWNS_-_Nebylitsy_Fables__instrumental_.ogg",
+													"music/SKOMOROSHIJ_BUNT_REVOLUTION_OF_CLOWNS_-_Poljushko-Pole_A_Field__variant_.ogg",
+													"music/SKOMOROSHIJ_BUNT_REVOLUTION_OF_CLOWNS_-_Russkaja_Narodnaja_Russian_Traditional.ogg"];
+#end
+
 	private static var playedList:Array<Bool>;
 	private var fade:Bool;
 	private var fadeForGame:Bool;
@@ -25,7 +35,7 @@ class MusicManager
 		fade = false;
 		fadeForGame = true;
 		
-		currentMusiuc = new Sfx("music/SKOMOROSHIJ_BUNT_REVOLUTION_OF_CLOWNS_-_Naigrysh_Impromptu.mp3");
+		currentMusiuc = new Sfx(mainMusic);
 		currentMusiuc.loop(1, 0);
 	}
 	
@@ -99,7 +109,7 @@ class MusicManager
 				}
 				else
 				{
-					currentMusiuc = new Sfx("music/SKOMOROSHIJ_BUNT_REVOLUTION_OF_CLOWNS_-_Naigrysh_Impromptu.mp3");
+					currentMusiuc = new Sfx(mainMusic);
 					currentMusiuc.loop(1, 0);
 				}
 			}

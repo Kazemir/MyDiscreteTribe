@@ -18,7 +18,6 @@ class MenuScreen extends Screen
 	public function new() 
 	{
 		super();
-		
 	}
 	
 	public override function begin()
@@ -33,10 +32,11 @@ class MenuScreen extends Screen
 		addGraphic(img);
 		
 		textMenuElements.push(new DrawText("Начать игру", GameFont.TriodPostnaja, 38, HXP.halfWidth, 240, activeColor, true));
-		textMenuElements.push(new DrawText("Помощь", GameFont.TriodPostnaja, 38, HXP.halfWidth, 280, passiveColor, true));
-		textMenuElements.push(new DrawText("Авторы", GameFont.TriodPostnaja, 38, HXP.halfWidth, 320, passiveColor, true));
+		textMenuElements.push(new DrawText("Настройки", GameFont.TriodPostnaja, 38, HXP.halfWidth, 280, passiveColor, true));
+		textMenuElements.push(new DrawText("Помощь", GameFont.TriodPostnaja, 38, HXP.halfWidth, 320, passiveColor, true));
+		textMenuElements.push(new DrawText("Авторы", GameFont.TriodPostnaja, 38, HXP.halfWidth, 360, passiveColor, true));
 #if windows
-		textMenuElements.push(new DrawText("Выход", GameFont.TriodPostnaja, 38, HXP.halfWidth, 360, passiveColor, true));
+		textMenuElements.push(new DrawText("Выход", GameFont.TriodPostnaja, 38, HXP.halfWidth, 400, passiveColor, true));
 #end
 		
 		for (i in 0...textMenuElements.length) 
@@ -71,10 +71,12 @@ class MenuScreen extends Screen
 				Screen.music.goGameMusic();
 				HXP.scene = new GameScreen();
 			case 1:
-
+				HXP.scene = new SettingsMenu();
 			case 2:
-
-			case 5:
+				HXP.scene = new HelpScreen();
+			case 3:
+				HXP.scene = new CreatorsScreen();
+			case 4:
 				ExitGame();
 		}
 	}

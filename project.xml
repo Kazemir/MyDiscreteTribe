@@ -18,10 +18,10 @@
 	<assets path="assets/graphics" rename="graphics" include="*.png|*.jpg" />
 	
 	<assets path="assets/sounds" rename="sounds" include="*.mp3" if="flash" />
-	<assets path="assets/sounds" rename="sounds" include="*.wav|*.ogg|*.mp3" unless="flash" />
-	
 	<assets path="assets/music" rename="music" include="*.mp3" if="flash" />
-	<assets path="assets/music" rename="music" include="*.wav|*.ogg|*.mp3" unless="flash" />
+	
+	<assets path="assets/sounds" rename="sounds" include="*.wav|*.ogg" unless="flash" />
+	<assets path="assets/music" rename="music" include="*.wav|*.ogg" unless="flash" />
 	
 	<assets path="assets/fonts" rename="fonts" include="*.ttf" />
 

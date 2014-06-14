@@ -3,10 +3,12 @@ package com.kazemir.mdt.screen;
 import com.haxepunk.HXP;
 import com.haxepunk.utils.Input;
 import com.haxepunk.graphics.Image;
+import com.kazemir.mdt.TileGrid;
 
 class GameScreen extends Screen
 {
-
+	private var tileGrid:TileGrid;
+	
 	public function new() 
 	{
 		super();
@@ -19,6 +21,8 @@ class GameScreen extends Screen
 		var base2 = Image.createRect(HXP.width, HXP.height, 0xe6e3c4, 1);
         base2.scrollX = base2.scrollY = 0;
         addGraphic(base2).layer = 10; 
+		
+		
 	}
 	
 	public override function update()
