@@ -107,7 +107,7 @@ public function actionMenu(positive:Bool)
 	{
 		if (Input.pressed("esc") || Screen.joyPressed("BACK") || Screen.joyPressed("B") )
 		{
-			SaveSettings();
+			Screen.SaveSettings();
 			HXP.scene = new MenuScreen();
 		}
 		if (Input.pressed("up") || Screen.joyPressed("DPAD_UP"))

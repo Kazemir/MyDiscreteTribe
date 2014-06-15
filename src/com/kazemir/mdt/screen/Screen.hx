@@ -82,14 +82,14 @@ class Screen extends Scene
 #end
 	}
 	
-	private function ExitGame()
+	public static function ExitGame()
 	{
 		music.stop();
 		SaveSettings();
 		System.exit(0);
 	}
 	
-	public function SaveSettings()
+	public static function SaveSettings()
 	{
 		var config:Xml = Xml.createElement("settings");
 

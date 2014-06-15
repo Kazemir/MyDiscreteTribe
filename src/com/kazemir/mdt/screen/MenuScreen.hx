@@ -3,6 +3,7 @@ package com.kazemir.mdt.screen;
 import com.haxepunk.HXP;
 import com.haxepunk.graphics.Image;
 import com.haxepunk.utils.Input;
+import com.kazemir.mdt.YesNoBox;
 
 import com.kazemir.mdt.DrawText;
 
@@ -78,29 +79,30 @@ class MenuScreen extends Screen
 			case 3:
 				HXP.scene = new CreatorsScreen();
 			case 4:
-				ExitGame();
+				Screen.ExitGame();
 		}
 	}
 
 	public override function update()
 	{
-		if (Input.pressed("esc") || Screen.joyPressed("BACK") || Screen.joyPressed("B") )
+		if ((Input.pressed("esc") || Screen.joyPressed("BACK") || Screen.joyPressed("B")) && !Screen.overrideControlByBox)
 		{
 #if windows
-			ExitGame();
+			var yesNoBox:YesNoBox = new YesNoBox(HXP.halfWidth, HXP.halfHeight, "Выходъ изъ игры", "Вы действительно хотите выйти изъ игры?", true);
+			add(yesNoBox);
 #end
 		}
-		if (Input.pressed("up") || Screen.joyPressed("DPAD_UP"))
+		if ((Input.pressed("up") || Screen.joyPressed("DPAD_UP")) && !Screen.overrideControlByBox)
 		{
 			currentMenuElement--;
 			changeMenu();
 		}
-		if (Input.pressed("down") || Screen.joyPressed("DPAD_DOWN"))
+		if ((Input.pressed("down") || Screen.joyPressed("DPAD_DOWN")) && !Screen.overrideControlByBox)
 		{
 			currentMenuElement++;
 			changeMenu();
 		}
-		if (Input.pressed("action") || Screen.joyPressed("START") || Screen.joyPressed("A"))
+		if ((Input.pressed("action") || Screen.joyPressed("START") || Screen.joyPressed("A")) && !Screen.overrideControlByBox)
 		{
 			actionMenu();
 		}
