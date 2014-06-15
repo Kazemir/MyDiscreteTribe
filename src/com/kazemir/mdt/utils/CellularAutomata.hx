@@ -3,6 +3,9 @@ package com.kazemir.mdt.utils;
 import haxe.ds.Vector;
 
 import com.haxepunk.HXP;
+import com.haxepunk.Sfx;
+
+import com.kazemir.mdt.screen.SettingsMenu;
 
 //0 - ничего, 1 - игрок, 2 - племя, 3 - враги
 
@@ -38,6 +41,7 @@ class CellularAutomata
 	
 	public function nextTurn( direction:Int ):Bool
 	{
+		var thereIsSomeoneDied:Bool = false;
 		var nextPlayerPos:PointInt = playerPos.clone();
 		switch(direction)
 		{
@@ -58,7 +62,10 @@ class CellularAutomata
 			if (matrix[nextPlayerPos.x][nextPlayerPos.y] == 2)
 				matrix[playerPos.x][playerPos.y] = 2;
 			else
+			{
 				matrix[playerPos.x][playerPos.y] = 0;
+				thereIsSomeoneDied = true;
+			}
 		}
 		else
 		{
@@ -69,6 +76,16 @@ class CellularAutomata
 		playerPos = nextPlayerPos.clone();
 		
 		//ход всех остальных
+		
+		if (thereIsSomeoneDied)
+		{
+#if !flash
+			var st:Sfx = new Sfx("sounds/dead.wav");
+#else
+			var st:Sfx = new Sfx("sounds/dead.mp3");
+#end
+			st.play(SettingsMenu.soudVolume / 10, 0, false);
+		}
 		
 		return true;
 	}

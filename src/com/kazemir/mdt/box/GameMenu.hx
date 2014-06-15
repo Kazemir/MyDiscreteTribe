@@ -52,7 +52,7 @@ class GameMenu extends Entity
 		textMenuElements.push(new DrawText("Продолжить игру", GameFont.TriodPostnaja, Std.int(16*scale), frameW / 2, Std.int(38*scale), activeColor, true));
 		textMenuElements.push(new DrawText("Настройки", GameFont.TriodPostnaja, Std.int(16*scale), frameW / 2, Std.int(58*scale), passiveColor, true));
 		textMenuElements.push(new DrawText("Выходъ", GameFont.TriodPostnaja, Std.int(16*scale), frameW / 2, Std.int(78*scale), passiveColor, true));
-		textMenuElements.push(new DrawText("Звук:", GameFont.TriodPostnaja, Std.int(16*scale), Std.int(6*scale), Std.int(30*scale), passiveColor, false));
+		textMenuElements.push(new DrawText("Звукъ:", GameFont.TriodPostnaja, Std.int(16*scale), Std.int(6*scale), Std.int(30*scale), passiveColor, false));
 		textMenuElements.push(new DrawText("Музыка:", GameFont.TriodPostnaja, Std.int(16*scale), Std.int(6*scale), Std.int(60*scale), passiveColor, false));
 		
 		textMenuElements.push(new DrawText("//////----", GameFont.TriodPostnaja, Std.int(16*scale), frameW - frameW/3, Std.int(30*scale), activeColor, false));

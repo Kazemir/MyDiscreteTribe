@@ -6,6 +6,7 @@ import com.haxepunk.Graphic;
 import com.haxepunk.Mask;
 import com.haxepunk.graphics.Stamp;
 import com.haxepunk.utils.Input;
+import com.kazemir.mdt.screen.GameScreen;
 
 import flash.display.BitmapData;
 import flash.display.Graphics;
@@ -20,16 +21,16 @@ class YesNoBox extends Entity
 	private var captionText:DrawText;
 	private var messageText:DrawText;
 	private var yesNoText:DrawText;
-	private var forGameExit:Bool;
+	private var boxType:Int;
 	
 	private static var minW:Int = 300;
 	private static var scale:Float = 1.5;
 	
-	public function new(x:Float=0, y:Float=0, caption:String, message:String, forGameExit:Bool = false) 
+	public function new(x:Float=0, y:Float=0, caption:String, message:String, type:Int = 0) 
 	{
 		super(x, y);
 		
-		this.forGameExit = forGameExit;
+		this.boxType = type;
 		
 		var sprite:Sprite = new Sprite();
         var g:Graphics = sprite.graphics;
@@ -74,7 +75,7 @@ class YesNoBox extends Entity
 		g.drawRoundRect(Std.int(3*scale), Std.int(28*scale + msgFrameH + 4*scale), Std.int(frameW - 6*scale), Std.int(22*scale), 0);
 		g.endFill();
 		
-		yesNoText = new DrawText("ДА - ENTER, НЕТ - ESC", GameFont.TriodPostnaja, Std.int(16*scale), frameW / 2, Std.int(28*scale + msgFrameH + 14*scale), 0, true);
+		yesNoText = new DrawText("ДА - ENTER, НЕТЪ - ESC", GameFont.TriodPostnaja, Std.int(16*scale), frameW / 2, Std.int(28*scale + msgFrameH + 14*scale), 0, true);
 		
 		var img:BitmapData = new BitmapData(frameW, Std.int(28*scale + msgFrameH + 4*scale + 25*scale), true, 0xe6e3c4);
 		img.draw(sprite);
@@ -103,21 +104,30 @@ class YesNoBox extends Entity
 		
 		if (Input.pressed("esc") || Screen.joyPressed("BACK") || Screen.joyPressed("B"))
 		{
-			Screen.overrideControlByBox = false;
-			this.scene.remove(this);
-		}
-		if (Input.pressed("action") || Screen.joyPressed("A"))
-		{
-			if (forGameExit)
+			if (boxType == 0)
 			{
-				Screen.ExitGame();
+				Screen.overrideControlByBox = false;
+				this.scene.remove(this);
 			}
-			else
+			if (boxType == 1)
 			{
 				Screen.overrideControlByBox = false;
 				this.scene.remove(this);
 				Screen.music.goMenuMusic();
 				HXP.scene = new MenuScreen();
+			}
+		}
+		if (Input.pressed("action") || Screen.joyPressed("A"))
+		{
+			if (boxType == 0)
+			{
+				Screen.ExitGame();
+			}
+			if (boxType == 1)
+			{
+				Screen.overrideControlByBox = false;
+				this.scene.remove(this);
+				HXP.scene = new GameScreen();
 			}
 		}
 	}

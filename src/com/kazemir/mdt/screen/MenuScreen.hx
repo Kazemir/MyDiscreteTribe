@@ -88,7 +88,7 @@ class MenuScreen extends Screen
 		if ((Input.pressed("esc") || Screen.joyPressed("BACK") || Screen.joyPressed("B")) && !Screen.overrideControlByBox)
 		{
 #if windows
-			var yesNoBox:YesNoBox = new YesNoBox(HXP.halfWidth, HXP.halfHeight, "Выходъ изъ игры", "Вы действительно хотите выйти изъ игры?", true);
+			var yesNoBox:YesNoBox = new YesNoBox(HXP.halfWidth, HXP.halfHeight, "Выходъ изъ игры", "Вы действительно хотите выйти изъ игры?", 0);
 			add(yesNoBox);
 #end
 		}
