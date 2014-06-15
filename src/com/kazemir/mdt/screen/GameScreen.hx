@@ -1,5 +1,7 @@
 package com.kazemir.mdt.screen;
 
+import com.haxepunk.Entity;
+import com.haxepunk.Graphic;
 import com.haxepunk.graphics.Graphiclist;
 import com.haxepunk.graphics.Spritemap;
 import com.haxepunk.graphics.Tilemap;
@@ -15,8 +17,8 @@ import com.kazemir.mdt.box.YesNoBox;
 class GameScreen extends Screen
 {
 	private var tileGrid:TileGrid;
+	private var characterGrid:TileGrid;
 	private var cellularAutomata:CellularAutomata;
-	private var characterList:Graphiclist;
 	private var cursor:Image;
 	
 	public function new() 
@@ -40,31 +42,49 @@ class GameScreen extends Screen
 		{
 			for (j in 0...16)
 			{
-				tileGrid.addTile(i, j, HXP.rand(9), false);
+				var rand:Float = HXP.random;
+				if (rand < 0.5)
+				{
+					tileGrid.addTile(i, j, 0, false);
+				}
+				else
+					tileGrid.addTile(i, j, HXP.rand(8) + 1, false);
 			}
 		}
 		add(tileGrid);
 		
+		cursor = new Image("graphics/cursor.png");
+		cursor.x = 0;
+		cursor.y = 0;
+		addGraphic(cursor, -2);
+		
 		cellularAutomata = new CellularAutomata(16, 16);
 		
+		characterGrid = new TileGrid(144, 70, 16, 16, 32, 32, "graphics/characters.png", -1);
+		add(characterGrid);
+		
+		updateGraphic();
+	}
+	
+	private function updateGraphic()
+	{
 		for (i in 0...16)
 		{
 			for (j in 0...16)
 			{
+				characterGrid.tileMap.clearTile(i, j);
 				if (cellularAutomata.matrix[i][j] != 0)
 				{
-					var aaa:Spritemap = new Spritemap("graphics/characters.png", 32, 32);
 					if (cellularAutomata.matrix[i][j] == 1)
 					{
-						addGraphic(new Image("graphics/cursor.png"), -2, 144 + i * 32, 70 + j * 32);
-						aaa.setFrame(0, 0);
+						cursor.x = 144 + i * 32;
+						cursor.y = 70 + j * 32;
+						characterGrid.tileMap.setTile(i, j, 0);
 					}
 					if(cellularAutomata.matrix[i][j] == 2)
-						aaa.setFrame(2, 0);
+						characterGrid.tileMap.setTile(i, j, 2);
 					if(cellularAutomata.matrix[i][j] == 3)
-						aaa.setFrame(1, 0);
-					//characterList.add(
-					addGraphic(aaa, -1, 144 + i * 32, 70 + j * 32);
+						characterGrid.tileMap.setTile(i, j, 1);
 				}
 			}
 		}
@@ -77,21 +97,25 @@ class GameScreen extends Screen
 			var gM:GameMenu = new GameMenu(HXP.halfWidth, HXP.halfHeight);
 			add(gM);
 		}
-		if (Input.pressed("up") || Screen.joyPressed("DPAD_UP"))
+		if ((Input.pressed("up") || Screen.joyPressed("DPAD_UP")) && !Screen.overrideControlByBox)
 		{
-			//currentMenuElement--;
+			if(cellularAutomata.nextTurn(0))
+				updateGraphic();
 		}
-		if (Input.pressed("down") || Screen.joyPressed("DPAD_DOWN"))
+		if ((Input.pressed("down") || Screen.joyPressed("DPAD_DOWN")) && !Screen.overrideControlByBox)
 		{
-			//currentMenuElement++;
+			if(cellularAutomata.nextTurn(2))
+				updateGraphic();
 		}
-		if (Input.pressed("left") || Screen.joyPressed("DPAD_LEFT"))
+		if ((Input.pressed("left") || Screen.joyPressed("DPAD_LEFT")) && !Screen.overrideControlByBox)
 		{
-			//actionMenu(false);
+			if(cellularAutomata.nextTurn(3))
+				updateGraphic();
 		}
-		if (Input.pressed("right") || Screen.joyPressed("DPAD_RIGHT"))
+		if ((Input.pressed("right") || Screen.joyPressed("DPAD_RIGHT")) && !Screen.overrideControlByBox)
 		{
-			//actionMenu(true);
+			if(cellularAutomata.nextTurn(1))
+				updateGraphic();
 		}
 		
 		super.update();
