@@ -3,7 +3,9 @@ package com.kazemir.mdt.screen;
 import com.haxepunk.HXP;
 import com.haxepunk.utils.Input;
 import com.haxepunk.graphics.Image;
+
 import com.kazemir.mdt.TileGrid;
+import com.kazemir.mdt.YesNoBox;
 
 class GameScreen extends Screen
 {
@@ -29,10 +31,12 @@ class GameScreen extends Screen
 	
 	public override function update()
 	{
-		if (Input.pressed("esc") || Screen.joyPressed("BACK") || Screen.joyPressed("B") )
+		if ((Input.pressed("esc") || Screen.joyPressed("BACK") || Screen.joyPressed("B")) && !Screen.overrideControlByBox)
 		{
-			Screen.music.goMenuMusic();
-			HXP.scene = new MenuScreen();
+			var yesNoBox:YesNoBox = new YesNoBox(HXP.halfWidth, HXP.halfHeight, "Выходъ въ меню", "Вы действительно хотите выйти в главное меню?");
+			add(yesNoBox);
+			//Screen.music.goMenuMusic();
+			//HXP.scene = new MenuScreen();
 		}
 		
 		super.update();

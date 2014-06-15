@@ -26,7 +26,8 @@ import openfl.utils.SystemPath;
 
 class Screen extends Scene
 {
-	private static var music:MusicManager;
+	public static var music:MusicManager;
+	public static var overrideControlByBox:Bool;
 	
 #if flash
 	public static var focusLostScreen:Image;
@@ -36,6 +37,8 @@ class Screen extends Scene
 	public function new() 
 	{
 		super();
+		
+		overrideControlByBox = false;
 		
 		if(music == null)
 			music = new MusicManager();
