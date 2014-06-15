@@ -5,11 +5,8 @@ import com.haxepunk.Entity;
 import flash.text.TextFormatAlign;
 
 enum GameFont {
-        Beryozki;
         TriodPostnaja;
-		ConsolaMono;
 		Tsarevich;
-		ZAGADKA;
     }
 
 class DrawText
@@ -22,16 +19,10 @@ class DrawText
 		var fnt;
 		switch(font)
 		{
-			case Beryozki:
-				fnt = "fonts/Beryozki.ttf";
 			case TriodPostnaja:
 				fnt = "fonts/TriodPostnaja.ttf";
-			case ConsolaMono:
-				fnt = "fonts/ConsolaMono-Bold.ttf";
 			case Tsarevich:
 				fnt = "fonts/Tsarevich.ttf";
-			case ZAGADKA:
-				fnt = "fonts/ZAGADKA_.TTF";
 		}
 		
 		if(width == -1 || height == -1)
@@ -99,16 +90,10 @@ class DrawText
 		var fnt;
 		switch(font)
 		{
-			case Beryozki:
-				fnt = "fonts/Beryozki.ttf";
 			case TriodPostnaja:
 				fnt = "fonts/TriodPostnaja.ttf";
-			case ConsolaMono:
-				fnt = "fonts/ConsolaMono-Bold.ttf";
 			case Tsarevich:
 				fnt = "fonts/Tsarevich.ttf";
-			case ZAGADKA:
-				fnt = "fonts/ZAGADKA_.TTF";
 		}
 		var fastText:Text = new Text(str, x, y);
 		fastText.color = color;

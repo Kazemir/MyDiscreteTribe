@@ -1,13 +1,14 @@
 package com.kazemir.mdt.screen;
 
+import com.haxepunk.graphics.Graphiclist;
 import com.haxepunk.graphics.Spritemap;
 import com.haxepunk.graphics.Tilemap;
 import com.haxepunk.HXP;
 import com.haxepunk.utils.Input;
 import com.haxepunk.graphics.Image;
+
 import com.kazemir.mdt.box.GameMenu;
 import com.kazemir.mdt.utils.CellularAutomata;
-
 import com.kazemir.mdt.utils.TileGrid;
 import com.kazemir.mdt.box.YesNoBox;
 
@@ -15,6 +16,8 @@ class GameScreen extends Screen
 {
 	private var tileGrid:TileGrid;
 	private var cellularAutomata:CellularAutomata;
+	private var characterList:Graphiclist;
+	private var cursor:Image;
 	
 	public function new() 
 	{
@@ -51,12 +54,16 @@ class GameScreen extends Screen
 				if (cellularAutomata.matrix[i][j] != 0)
 				{
 					var aaa:Spritemap = new Spritemap("graphics/characters.png", 32, 32);
-					if(cellularAutomata.matrix[i][j] == 1)
+					if (cellularAutomata.matrix[i][j] == 1)
+					{
+						addGraphic(new Image("graphics/cursor.png"), -2, 144 + i * 32, 70 + j * 32);
 						aaa.setFrame(0, 0);
+					}
 					if(cellularAutomata.matrix[i][j] == 2)
 						aaa.setFrame(2, 0);
 					if(cellularAutomata.matrix[i][j] == 3)
 						aaa.setFrame(1, 0);
+					//characterList.add(
 					addGraphic(aaa, -1, 144 + i * 32, 70 + j * 32);
 				}
 			}
@@ -69,6 +76,22 @@ class GameScreen extends Screen
 		{
 			var gM:GameMenu = new GameMenu(HXP.halfWidth, HXP.halfHeight);
 			add(gM);
+		}
+		if (Input.pressed("up") || Screen.joyPressed("DPAD_UP"))
+		{
+			//currentMenuElement--;
+		}
+		if (Input.pressed("down") || Screen.joyPressed("DPAD_DOWN"))
+		{
+			//currentMenuElement++;
+		}
+		if (Input.pressed("left") || Screen.joyPressed("DPAD_LEFT"))
+		{
+			//actionMenu(false);
+		}
+		if (Input.pressed("right") || Screen.joyPressed("DPAD_RIGHT"))
+		{
+			//actionMenu(true);
 		}
 		
 		super.update();

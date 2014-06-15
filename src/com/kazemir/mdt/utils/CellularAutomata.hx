@@ -12,6 +12,8 @@ class CellularAutomata
 	
 	public function new( width:Int, height:Int ) 
 	{
+		matrix = Array2D.create(width, height);
+		
 		for (i in 0...16)
 		{
 			for (j in 0...16)
