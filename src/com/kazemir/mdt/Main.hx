@@ -19,6 +19,11 @@ import sys.io.File;
 
 class Main extends Engine
 {
+#if flash
+	public static var focused:Bool;
+	public static var setPause:Bool;
+#end
+	
 	public function new()
 	{
 #if !flash
@@ -34,6 +39,10 @@ class Main extends Engine
 		HXP.console.enable();
 		HXP.console.log(["The game has started!"]);
 #end
+#if flash
+		focused = HXP.focused;
+		setPause = false;
+#end
 		LoadConfig();
 		HXP.scene = new SplashScreen();
 	}
@@ -43,16 +52,30 @@ class Main extends Engine
 		new Main(); 
 	}
 	
-	/*override public function focusLost () 
+#if flash
+	override public function focusLost () 
 	{
-		paused = true;
+		focused = false;
 	}
 	
 	override public function focusGained () 
 	{
 		paused = false;
-	}*/
+		focused = true;
+	}
 	
+	override public function update() 
+	{
+		if (setPause)
+		{
+			paused = true;
+			setPause = false;
+		}
+		
+		super.update();
+	}
+#end
+
 	private static function LoadConfig()
 	{
 		var config:Xml;

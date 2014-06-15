@@ -1,5 +1,6 @@
 package com.kazemir.mdt.screen;
 
+import com.haxepunk.graphics.Image;
 import com.haxepunk.HXP;
 import com.haxepunk.Scene;
 import com.haxepunk.Sfx;
@@ -27,12 +28,27 @@ class Screen extends Scene
 {
 	private static var music:MusicManager;
 	
+#if flash
+	public static var focusLostScreen:Image;
+	//public static var isFirstTime
+#end
+	
 	public function new() 
 	{
 		super();
 		
 		if(music == null)
 			music = new MusicManager();
+			
+#if flash
+		if (focusLostScreen == null)
+		{
+			focusLostScreen = new Image("graphics/lostFocus.png");
+			focusLostScreen.scrollX = focusLostScreen.scrollY = 0;
+			focusLostScreen.visible = true;
+		}
+		addGraphic(focusLostScreen, -999);
+#end
 	}
 	
 	public override function begin()
@@ -54,6 +70,13 @@ class Screen extends Scene
 		
 		prevHatX = Input.joystick(0).hat.x;
 		prevHatY = Input.joystick(0).hat.y;
+		
+#if flash
+		if (Main.focused)
+			Screen.focusLostScreen.visible = false;
+		else
+			Screen.focusLostScreen.visible = true;
+#end
 	}
 	
 	private function ExitGame()

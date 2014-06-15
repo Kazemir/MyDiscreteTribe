@@ -3,12 +3,17 @@ package com.kazemir.mdt.screen;
 import com.haxepunk.HXP;
 import com.haxepunk.graphics.Image;
 import com.haxepunk.utils.Input;
+import com.kazemir.mdt.Main;
 
 class SplashScreen extends Screen
 {
 	private var base:Image;
 	private var isDown:Bool;
 	
+#if flash
+	private var frameCount:Int;
+#end
+
 	public function new() 
 	{
 		super();
@@ -32,6 +37,10 @@ class SplashScreen extends Screen
 		img.centerOrigin();
 		img.scale = 1.0;
 		addGraphic(img, 10, HXP.width / 2, HXP.height / 2);
+		
+#if flash
+		frameCount = 0;
+#end
 	}
 	
 	public override function update()
@@ -52,5 +61,19 @@ class SplashScreen extends Screen
 		}
 		
 		super.update();
+		
+#if flash
+		if (frameCount == 10)
+		{
+			if(!Main.focused)
+				Main.setPause = true;
+			frameCount++;
+			
+		}
+		else if(frameCount < 10)
+		{
+			frameCount++;
+		}
+#end
 	}
 }

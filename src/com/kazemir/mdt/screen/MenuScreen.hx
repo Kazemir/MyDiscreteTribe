@@ -37,7 +37,7 @@ class MenuScreen extends Screen
 		textMenuElements.push(new DrawText("Помощь", GameFont.TriodPostnaja, 38, HXP.halfWidth, 320, passiveColor, true));
 		textMenuElements.push(new DrawText("Авторы", GameFont.TriodPostnaja, 38, HXP.halfWidth, 360, passiveColor, true));
 #if windows
-		textMenuElements.push(new DrawText("Выход", GameFont.TriodPostnaja, 38, HXP.halfWidth, 400, passiveColor, true));
+		textMenuElements.push(new DrawText("Выходъ", GameFont.TriodPostnaja, 38, HXP.halfWidth, 400, passiveColor, true));
 #end
 		
 		for (i in 0...textMenuElements.length) 

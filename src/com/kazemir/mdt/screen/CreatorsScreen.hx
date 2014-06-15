@@ -17,7 +17,7 @@ class CreatorsScreen extends Screen
 		super.begin();
 		
 		var img:Image = new Image("graphics/menu_creators.png");
-		addGraphic(img);
+		addGraphic(img, 0);
 	}
 	
 	public override function update()
