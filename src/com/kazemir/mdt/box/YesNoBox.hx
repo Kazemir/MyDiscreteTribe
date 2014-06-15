@@ -1,4 +1,4 @@
-package com.kazemir.mdt;
+package com.kazemir.mdt.box;
 
 import com.haxepunk.HXP;
 import com.haxepunk.Entity;
@@ -11,7 +11,7 @@ import flash.display.BitmapData;
 import flash.display.Graphics;
 import flash.display.Sprite;
 
-import com.kazemir.mdt.DrawText;
+import com.kazemir.mdt.utils.DrawText;
 import com.kazemir.mdt.screen.Screen;
 import com.kazemir.mdt.screen.MenuScreen;
 
@@ -34,7 +34,7 @@ class YesNoBox extends Entity
 		var sprite:Sprite = new Sprite();
         var g:Graphics = sprite.graphics;
 		
-		captionText = new DrawText(caption, GameFont.Tsarevich, Std.int(28*scale), Std.int(150*scale), Std.int(17*scale), 0, true);
+		captionText = new DrawText(caption, GameFont.Tsarevich, Std.int(28*scale), Std.int(150*scale), Std.int(16*scale), 0, true);
 		
 		var frameW:Int = Std.int(minW*scale);
 		if (captionText.label.width + Std.int(10*scale) > Std.int(minW*scale))
@@ -90,7 +90,7 @@ class YesNoBox extends Entity
 		yesNoText.label.scrollX = yesNoText.label.scrollY = 0;
 		
 		graphic.x -= frameW / 2;
-		graphic.y -= 16*scale + msgFrameH / 2;
+		graphic.y -= 16 * scale + msgFrameH / 2;
 		
 		layer = -50;
 		

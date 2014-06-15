@@ -1,4 +1,4 @@
-package com.kazemir.mdt;
+package com.kazemir.mdt.utils;
 
 import com.haxepunk.Entity;
 import com.haxepunk.graphics.Tilemap;
@@ -10,14 +10,12 @@ class TileGrid extends Entity
 	public var tileMap:Tilemap;
 	public var collideGrid:Grid; 
 	
-	private var tileset:String;
-	
-	public function new( x:Float, y:Float, sizeX:Int, sizeY:Int, tileset:String, layer:Int ) 
+	public function new( x:Float, y:Float, width:Int, height:Int, tileWidth:Int, tileHeight:Int, tileset:String, layer:Int ) 
 	{
-		tileMap = new Tilemap(tileset, sizeX, sizeY, 40, 40, 0, 0);
+		tileMap = new Tilemap(tileset, width * tileWidth, height * tileHeight, tileWidth, tileHeight, 0, 0);
 		collideGrid = new Grid(tileMap.width, tileMap.height, tileMap.tileWidth, tileMap.tileHeight, 0, 0);
 
-		super(x, y, tileMap, collideGrid);
+		super(x, y, tileMap , collideGrid);
 		
 		type = "solid";
 		this.layer = layer;

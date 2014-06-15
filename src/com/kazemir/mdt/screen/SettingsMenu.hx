@@ -4,7 +4,7 @@ import com.haxepunk.HXP;
 import com.haxepunk.utils.Input;
 import com.haxepunk.graphics.Image;
 
-import com.kazemir.mdt.DrawText;
+import com.kazemir.mdt.utils.DrawText;
 
 class SettingsMenu extends Screen
 {
@@ -29,8 +29,8 @@ class SettingsMenu extends Screen
 		var img:Image = new Image("graphics/menu_settings.png");
 		addGraphic(img);
 		
-		addGraphic(DrawText.CreateTextEntity("Звук: ", GameFont.TriodPostnaja, 38, 150, 280, 0x0, false));
-		addGraphic(DrawText.CreateTextEntity("Музыка: ", GameFont.TriodPostnaja, 38, 150, 320, 0x0, false));
+		addGraphic(DrawText.CreateTextEntity("Звук:", GameFont.TriodPostnaja, 38, 150, 280, 0x0, false));
+		addGraphic(DrawText.CreateTextEntity("Музыка:", GameFont.TriodPostnaja, 38, 150, 320, 0x0, false));
 	
 		textMenuElements.push(new DrawText("//////----", GameFont.TriodPostnaja, 38, 475, 280, activeColor, false));
 		textMenuElements.push(new DrawText("/////////-", GameFont.TriodPostnaja, 38, 475, 320, passiveColor, false));

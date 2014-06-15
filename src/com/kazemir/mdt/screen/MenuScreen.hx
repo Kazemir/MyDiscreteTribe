@@ -3,9 +3,9 @@ package com.kazemir.mdt.screen;
 import com.haxepunk.HXP;
 import com.haxepunk.graphics.Image;
 import com.haxepunk.utils.Input;
-import com.kazemir.mdt.YesNoBox;
 
-import com.kazemir.mdt.DrawText;
+import com.kazemir.mdt.box.YesNoBox;
+import com.kazemir.mdt.utils.DrawText;
 
 import flash.system.System;
 

@@ -1,4 +1,4 @@
-package com.kazemir.mdt;
+package com.kazemir.mdt.utils;
 
 import com.haxepunk.graphics.Text;
 import com.haxepunk.Entity;

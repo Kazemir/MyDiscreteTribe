@@ -1,4 +1,4 @@
-package com.kazemir.mdt;
+package com.kazemir.mdt.utils;
 
 import com.haxepunk.HXP;
 import com.haxepunk.Sfx;

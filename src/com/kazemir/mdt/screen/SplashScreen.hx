@@ -3,6 +3,7 @@ package com.kazemir.mdt.screen;
 import com.haxepunk.HXP;
 import com.haxepunk.graphics.Image;
 import com.haxepunk.utils.Input;
+
 import com.kazemir.mdt.Main;
 
 class SplashScreen extends Screen

@@ -12,7 +12,7 @@ import com.haxepunk.utils.Data;
 
 import flash.system.System;
 
-import com.kazemir.mdt.MusicManager;
+import com.kazemir.mdt.utils.MusicManager;
 
 #if !flash
 import sys.io.File;
