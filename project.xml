@@ -5,7 +5,7 @@
  	<app file="mdt" main="com.kazemir.mdt.Main" path="bin" />
 
 	<window fps="30" background="0x333333" />
-	<window width="800" height="600" resizable="true" unless="mobile" />
+	<window width="800" height="600" resizable="false" unless="mobile" />
 	<window fullscreen="true" if="mobile" />
 	<window orientation="landscape" vsync="true" antialiasing="0" if="cpp" />
 
