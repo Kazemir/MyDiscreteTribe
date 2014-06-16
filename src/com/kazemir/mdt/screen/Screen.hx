@@ -31,7 +31,6 @@ class Screen extends Scene
 	
 #if flash
 	public static var focusLostScreen:Image;
-	//public static var isFirstTime
 #end
 	
 	public function new() 

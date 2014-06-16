@@ -6,7 +6,6 @@ import com.haxepunk.Graphic;
 import com.haxepunk.Mask;
 import com.haxepunk.graphics.Stamp;
 import com.haxepunk.utils.Input;
-import com.kazemir.mdt.screen.GameScreen;
 
 import flash.display.BitmapData;
 import flash.display.Graphics;
@@ -15,6 +14,7 @@ import flash.display.Sprite;
 import com.kazemir.mdt.utils.DrawText;
 import com.kazemir.mdt.screen.Screen;
 import com.kazemir.mdt.screen.MenuScreen;
+import com.kazemir.mdt.screen.GameScreen;
 
 class YesNoBox extends Entity
 {

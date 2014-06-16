@@ -1,18 +1,16 @@
 package com.kazemir.mdt.utils;
 
-import com.kazemir.mdt.utils.CellularAutomata.PointInt;
 import haxe.ds.Vector;
 
 import com.haxepunk.HXP;
 import com.haxepunk.Sfx;
 
 import com.kazemir.mdt.screen.SettingsMenu;
-
-//0 - ничего, 1 - игрок, 2 - племя, 3 - враги
+import com.kazemir.mdt.utils.CellularAutomata.PointInt;
 
 class CellularAutomata
 {
-	public var matrix:Array<Array<Int>>;
+	public var matrix:Array<Array<Int>>;	//0 - ничего, 1 - игрок, 2 - племя, 3 - враги
 	public var playerPos:PointInt;
 	public var enemiesCampPos:PointInt;
 	public var villagersCampPos:PointInt;
@@ -22,7 +20,7 @@ class CellularAutomata
 	
 	private var iteration:Int;
 	
-	private var dificult:Int;//getTypeCount(new PointInt(i, j), 1) == 0
+	private var dificult:Int;
 	
 	public function new( width:Int, height:Int, dificult:Int = 0, startEnemies:Int = 9, startVillagers:Int = 5 ) 
 	{
@@ -99,7 +97,6 @@ class CellularAutomata
 			{
 				if (matrix[i][j] == 3 && getTypeCount(new PointInt(i, j), 2) == 0 && getTypeCount(new PointInt(i, j), 0) > 0)
 				{
-					//spawnType(new PointInt(i, j), 4);
 					var p:PointInt = nearestFreePos(new PointInt(i, j));
 					matrix[p.x][p.y] = 4;
 					matrix[i][j] = 0;
@@ -158,7 +155,6 @@ class CellularAutomata
 		//спавн врага каждые четыре хода
 		if (iteration % 4 == 0 && newMatrix[enemiesCampPos.x][enemiesCampPos.y] != 1)
 			spawnType(enemiesCampPos, 3);
-			//newMatrix[enemiesCampPos.x][enemiesCampPos.y] = 3;
 		
 		if (thereIsSomeoneDied)
 		{
@@ -268,9 +264,7 @@ class Array2D
         {
             a[x] = [];
             for (y in 0...h)
-            {
                 a[x][y] = 0;
-            }
         }
         return a;
     }

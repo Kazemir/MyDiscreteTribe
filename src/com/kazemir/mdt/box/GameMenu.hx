@@ -5,7 +5,6 @@ import com.haxepunk.graphics.Stamp;
 import com.haxepunk.HXP;
 import com.haxepunk.utils.Input;
 import com.haxepunk.utils.Key;
-import com.kazemir.mdt.screen.GameScreen;
 
 import flash.display.BitmapData;
 import flash.display.Graphics;
@@ -15,6 +14,7 @@ import com.kazemir.mdt.utils.DrawText;
 import com.kazemir.mdt.screen.Screen;
 import com.kazemir.mdt.screen.MenuScreen;
 import com.kazemir.mdt.screen.SettingsMenu;
+import com.kazemir.mdt.screen.GameScreen;
 
 class GameMenu extends Entity
 {
